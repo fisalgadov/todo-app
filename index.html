@@ -6,38 +6,38 @@
   <title>Todo App</title>
   <style>
     :root {
-      --bg-page:        #f0f2f5;
+      --bg-page:        linear-gradient(140deg, #eef2ff 0%, #f8fafc 40%, #eff6ff 100%);
       --bg-container:   #ffffff;
-      --bg-item:        #f9fafb;
-      --bg-item-done:   #eef2ff;
-      --border:         #e5e7eb;
-      --border-input:   #d1d5db;
-      --border-done:    #c7d2fe;
-      --text-heading:   #1a1a2e;
-      --text-body:      #374151;
-      --text-muted:     #9ca3af;
-      --accent:         #4f46e5;
-      --accent-hover:   #4338ca;
-      --shadow:         rgba(0, 0, 0, 0.1);
-      --toggle-bg:      #e5e7eb;
+      --bg-item:        #f8fafc;
+      --bg-item-done:   #ecfeff;
+      --border:         #e2e8f0;
+      --border-input:   #cbd5e1;
+      --border-done:    #99f6e4;
+      --text-heading:   #0f172a;
+      --text-body:      #334155;
+      --text-muted:     #64748b;
+      --accent:         #2563eb;
+      --accent-hover:   #1d4ed8;
+      --shadow:         rgba(15, 23, 42, 0.15);
+      --toggle-bg:      #e2e8f0;
       --toggle-icon:    "🌙";
     }
 
     [data-theme="dark"] {
-      --bg-page:        #0f172a;
-      --bg-container:   #1e293b;
-      --bg-item:        #273549;
-      --bg-item-done:   #1e2a4a;
+      --bg-page:        linear-gradient(150deg, #020617 0%, #0f172a 55%, #1e293b 100%);
+      --bg-container:   #0f172a;
+      --bg-item:        #1e293b;
+      --bg-item-done:   #0f2a37;
       --border:         #334155;
       --border-input:   #475569;
-      --border-done:    #3b4f8a;
-      --text-heading:   #f1f5f9;
-      --text-body:      #cbd5e1;
-      --text-muted:     #64748b;
-      --accent:         #6366f1;
-      --accent-hover:   #4f46e5;
-      --shadow:         rgba(0, 0, 0, 0.4);
-      --toggle-bg:      #334155;
+      --border-done:    #0d9488;
+      --text-heading:   #f8fafc;
+      --text-body:      #dbeafe;
+      --text-muted:     #94a3b8;
+      --accent:         #60a5fa;
+      --accent-hover:   #3b82f6;
+      --shadow:         rgba(2, 6, 23, 0.55);
+      --toggle-bg:      #1e293b;
       --toggle-icon:    "☀️";
     }
 
@@ -48,71 +48,80 @@
     }
 
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-family: Inter, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
       background: var(--bg-page);
       display: flex;
       justify-content: center;
-      padding: 60px 16px;
+      padding: 56px 16px;
       min-height: 100vh;
-      transition: background 0.3s;
+      transition: background 0.35s ease;
     }
 
     .container {
       background: var(--bg-container);
-      border-radius: 12px;
-      box-shadow: 0 4px 20px var(--shadow);
-      padding: 32px;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      box-shadow: 0 14px 38px var(--shadow);
+      padding: 30px;
       width: 100%;
-      max-width: 480px;
+      max-width: 520px;
       height: fit-content;
-      transition: background 0.3s, box-shadow 0.3s;
+      transition: background 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
     }
 
     .header {
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      display: grid;
+      justify-items: center;
       position: relative;
-      margin-bottom: 24px;
+      margin-bottom: 26px;
     }
 
     h1 {
-      font-size: 1.75rem;
+      letter-spacing: -0.02em;
+      font-size: 2rem;
       color: var(--text-heading);
+      text-align: center;
+    }
+
+    .subtitle {
+      margin-top: 8px;
+      font-size: 0.97rem;
+      color: var(--text-muted);
       text-align: center;
     }
 
     #theme-toggle {
       position: absolute;
       right: 0;
+      top: 4px;
       background: var(--toggle-bg);
       border: none;
-      border-radius: 8px;
-      padding: 6px 10px;
+      border-radius: 10px;
+      padding: 8px 11px;
       font-size: 1.1rem;
       cursor: pointer;
-      transition: background 0.2s;
+      transition: transform 0.2s ease, background 0.2s ease;
       line-height: 1;
     }
 
     #theme-toggle:hover {
-      opacity: 0.8;
+      transform: translateY(-1px);
     }
 
     .input-row {
       display: flex;
-      gap: 8px;
-      margin-bottom: 24px;
+      gap: 10px;
+      margin-bottom: 26px;
     }
 
     .input-row input {
       flex: 1;
-      padding: 10px 14px;
+      padding: 12px 15px;
       border: 1.5px solid var(--border-input);
-      border-radius: 8px;
+      border-radius: 11px;
       font-size: 1rem;
       outline: none;
-      transition: border-color 0.2s, background 0.3s, color 0.3s;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.3s ease, color 0.3s ease;
       background: var(--bg-container);
       color: var(--text-body);
     }
@@ -123,29 +132,33 @@
 
     .input-row input:focus {
       border-color: var(--accent);
+      box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 22%, transparent);
     }
 
     .input-row button {
-      padding: 10px 18px;
+      padding: 12px 18px;
       background: var(--accent);
       color: #fff;
       border: none;
-      border-radius: 8px;
-      font-size: 1rem;
+      border-radius: 11px;
+      font-size: 0.98rem;
+      font-weight: 600;
       cursor: pointer;
-      transition: background 0.2s;
+      transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
       white-space: nowrap;
     }
 
     .input-row button:hover {
       background: var(--accent-hover);
+      transform: translateY(-1px);
+      box-shadow: 0 8px 18px color-mix(in srgb, var(--accent) 30%, transparent);
     }
 
     #todo-list {
       list-style: none;
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 12px;
     }
 
     .todo-item {
@@ -154,16 +167,31 @@
       justify-content: space-between;
       background: var(--bg-item);
       border: 1.5px solid var(--border);
-      border-radius: 8px;
-      padding: 10px 14px;
+      border-radius: 12px;
+      padding: 12px 14px;
       gap: 12px;
-      animation: fadeIn 0.2s ease;
-      transition: background 0.3s, border-color 0.3s;
+      animation: fadeIn 0.22s ease;
+      transition: background 0.25s ease, border-color 0.25s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .todo-item:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 8px 20px color-mix(in srgb, var(--shadow) 60%, transparent);
     }
 
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(-6px); }
       to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeOut {
+      from { opacity: 1; transform: scale(1); }
+      to { opacity: 0; transform: scale(0.96); }
+    }
+
+    .todo-item.removing {
+      animation: fadeOut 0.2s ease forwards;
+      pointer-events: none;
     }
 
     .todo-item.done {
@@ -179,7 +207,7 @@
     .todo-left {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 12px;
       flex: 1;
       overflow: hidden;
     }
@@ -195,32 +223,59 @@
     .todo-text {
       font-size: 1rem;
       color: var(--text-body);
+      line-height: 1.4;
       word-break: break-word;
       cursor: pointer;
       user-select: none;
+      transition: color 0.2s ease;
     }
 
     .delete-btn {
       background: none;
       border: none;
       cursor: pointer;
-      color: #ef4444;
+      color: #f43f5e;
       font-size: 1.1rem;
-      padding: 4px;
-      border-radius: 4px;
-      transition: background 0.15s;
+      padding: 6px 7px;
+      border-radius: 8px;
+      transition: background 0.15s ease, transform 0.15s ease;
       flex-shrink: 0;
     }
 
     .delete-btn:hover {
-      background: #fee2e2;
+      background: color-mix(in srgb, #fda4af 25%, transparent);
+      transform: scale(1.05);
     }
 
     .empty-msg {
       text-align: center;
       color: var(--text-muted);
-      font-size: 0.95rem;
-      padding: 16px 0;
+      font-size: 0.94rem;
+      padding: 18px 0;
+      border: 1.5px dashed var(--border);
+      border-radius: 12px;
+      background: color-mix(in srgb, var(--bg-item) 80%, transparent);
+    }
+
+    @media (max-width: 560px) {
+      body {
+        padding: 24px 12px;
+      }
+
+      .container {
+        padding: 22px 18px;
+      }
+
+      h1 {
+        font-size: 1.75rem;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        animation: none !important;
+        transition: none !important;
+      }
     }
   </style>
 </head>
@@ -228,6 +283,7 @@
   <div class="container">
     <div class="header">
       <h1>Todo App</h1>
+      <p class="subtitle">Plan your day, one task at a time.</p>
       <button id="theme-toggle" title="Toggle dark/light mode">🌙</button>
     </div>
 
@@ -293,8 +349,11 @@
       deleteBtn.title = 'Delete todo';
       deleteBtn.innerHTML = '&#10005;';
       deleteBtn.addEventListener('click', () => {
-        li.remove();
-        updateEmpty();
+        li.classList.add('removing');
+        li.addEventListener('animationend', () => {
+          li.remove();
+          updateEmpty();
+        }, { once: true });
       });
 
       left.appendChild(checkbox);
