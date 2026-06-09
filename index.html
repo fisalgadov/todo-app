@@ -132,7 +132,7 @@
 
     .input-row input:focus {
       border-color: var(--accent);
-      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.22);
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.34);
     }
 
     .input-row button {
@@ -282,7 +282,6 @@
       .delete-btn:hover,
       #theme-toggle:hover {
         transform: none;
-        box-shadow: none;
       }
     }
   </style>
@@ -290,8 +289,8 @@
 <body>
   <div class="container">
     <div class="header">
-      <h1>Todo App</h1>
-      <p class="subtitle">Plan your day, one task at a time.</p>
+      <h1 aria-describedby="app-subtitle">Todo App</h1>
+      <p class="subtitle" id="app-subtitle">Plan your day, one task at a time.</p>
       <button id="theme-toggle" title="Toggle dark/light mode">🌙</button>
     </div>
 
